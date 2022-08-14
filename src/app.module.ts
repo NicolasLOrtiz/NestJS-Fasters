@@ -4,20 +4,10 @@ import { AppService } from './app.service';
 import { FoodsModule } from './foods/foods.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Food } from './foods/entities/food.entity';
+import { DatabaseModule } from './database/database.module';
 
 @Module({
-  imports: [
-    FoodsModule,
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      database: 'fasters',
-      entities: [Food],
-      synchronize: true,
-    }),
-  ],
+  imports: [FoodsModule, DatabaseModule],
   controllers: [AppController],
   providers: [AppService],
 })
